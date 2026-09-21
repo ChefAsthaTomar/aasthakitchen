@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aastha's Kitchen | Homemade Indian Food</title>
+
+  <style>
+    /* ===== GENERAL STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f6ef;
+      color: #193d2c;
+      line-height: 1.6;
+    }
+
+    :root {
+      --green: #123c29;
+      --orange: #e77c32;
+      --cream: #f8f6ef;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== NAVIGATION BAR ===== */
+    header {
+      background: #fffdf7;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: bold;
+      color: var(--green);
+    }
+
+    .logo span {
+      color: var(--orange);
+      font-style: italic;
+    }
+
+    .tagline {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #788579;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .order-btn {
+      background: var(--green);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 30px;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--green);
+      color: white;
+      min-height: 340px;
+    }
+
+    .hero-text {
+      padding: 55px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-family: Georgia, serif;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: #f5a66c;
+      font-style: italic;
+    }
+
+    .hero h2 {
+      font-size: 20px;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #e1e9e2;
+      max-width: 430px;
+    }
+
+    .hero-image {
+      min-height: 340px;
+      background: #e6d6c2;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== MENU SECTION ===== */
+    .menu-section {
+      padding: 35px 5%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      color: var(--green);
+      font-style: italic;
+    }
+
+    .section-heading p {
+      font-size: 16px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .menu-category {
+      padding: 0 5px 10px;
+      border-right: 1px solid #e2e0d8;
+    }
+
+    .menu-category:last-child {
+      border-right: none;
+    }
+
+    .category-title {
+      display: inline-block;
+      padding: 5px 22px;
+      border-radius: 12px;
+      background: #f9e4d8;
+      color: #a53e20;
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .menu-category:nth-child(2) .category-title {
+      background: #e2eadc;
+      color: var(--green);
+    }
+
+    .menu-category:nth-child(3) .category-title {
+      background: #fbe8c7;
+      color: #513e20;
+    }
+
+    .food-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #e5e2da;
+      font-size: 14px;
+    }
+
+    .food-item:last-child {
+      border-bottom: none;
+    }
+
+    .food-price {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ===== FOOD PHOTO GALLERY ===== */
+    .gallery {
+      padding: 10px 5% 35px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .photo-box {
+      height: 170px;
+      background: #e5e4de;
+      border-radius: 7px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7c887f;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      text-align: center;
+      padding: 40px 10%;
+      background: #eeeee5;
+    }
+
+    .about h2 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    /* ===== CONTACT / FOOTER ===== */
+    footer {
+      background: var(--green);
+      color: white;
+      padding: 30px 5% 15px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding-bottom: 25px;
+    }
+
+    .footer-grid h3 {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .footer-grid p,
+    .footer-grid a {
+      font-size: 13px;
+      color: #d6e0d7;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #54705e;
+      padding-top: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #d6e0d7;
+    }
+
+    /* ===== MOBILE RESPONSIVENESS ===== */
+    @media (max-width: 1024px) {
+        .menu-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      
+    @media (max-width: 600px) {
+        .menu-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+	@media (max-width: 768px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+	
+      nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text {
+        padding: 35px 8%;
+      }
+
+      .hero-image {
+        min-height: 230px;
+      }
+
+      .hero-image img {
+        min-height: 230px;
+        max-height: 300px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .menu-category {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 15px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .photo-box {
+        height: 130px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="home">
+    <div>
+      <div class="logo">
+        <span>Aastha's</span> Kitchen
+      </div>
+      <div class="tagline">
+        HOMEMADE • INDIAN • WITH LOVE
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="order-btn" href="#contact">Order Now</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO / BANNER ===== -->
+  <section class="hero">
+
+    <div class="hero-text">
+      <h1><span>Aastha's</span> Kitchen</h1>
+
+      <h2>Authentic Indian flavours, made with love.</h2>
+
+      <p>
+        Fresh ingredients, traditional recipes and
+        homemade goodness — bring the real vegeterian 
+		taste of India to your plate.
+      </p>
+    </div>
+
+    <div class="hero-image">
+      <!-- Replace with your main food picture -->
+      <img
+        src="images/hero-food.jpg"
+        alt="Delicious homemade Indian food"
+        onerror="this.style.display='none'; this.parentElement.style.background='#d8c5a8';"
+      >
+    </div>
+
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section class="menu-section" id="menu">
+
+    <div class="section-heading">
+      <h2>Our Menu</h2>
+      <p>Delicious vegetarian dishes, freshly prepared.</p>
+    </div>
+
+    <div class="menu-grid">
+
+      <!-- MAIN COURSE -->
+      <div class="menu-category">
+        <h3 class="category-title">Main Course</h3>
+
+        <div class="food-item">
+          <span>Dal Tadka</span>
+          <span class="food-price">€8.00</span>
+        </div>
+
+        <div class="food-item">
+          <span>Paneer Butter Masala</span>
+          <span class="food-price">€10.00</span>
+        </div>
+
+        <div class="food-item">
+          <span>Mix Veg Curry</span>
+          <span class="food-price">€8.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Chana Masala</span>
+          <span class="food-price">€8.00</span>
+        </div>
+
+        <div class="food-item">
+          <span>Rajma Masala</span>
+          <span class="food-price">€8.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Aloo Gobi</span>
+          <span class="food-price">€7.50</span>
+        </div>
+      </div>
+
+      <!-- RICE & BREADS -->
+      <div class="menu-category">
+        <h3 class="category-title">Rice & Breads</h3>
+
+        <div class="food-item">
+          <span>Steamed Basmati Rice</span>
+          <span class="food-price">€3.00</span>
+        </div>
+
+        <div class="food-item">
+          <span>Jeera Rice</span>
+          <span class="food-price">€3.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Veg Biryani</span>
+          <span class="food-price">€8.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Plain Naan</span>
+          <span class="food-price">€2.00</span>
+        </div>
+
+        <div class="food-item">
+          <span>Garlic Naan</span>
+          <span class="food-price">€2.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Tandoori Roti</span>
+          <span class="food-price">€1.50</span>
+        </div>
+      </div>
+
+      <!-- SNACKS & EXTRAS -->
+      <div class="menu-category">
+        <h3 class="category-title">Snacks & Extras</h3>
+
+        <div class="food-item">
+          <span>Samosa (2 pcs)</span>
+          <span class="food-price">€4.00</span>
+        </div>
+
+        <div class="food-item">
+          <span>Pakora (Mixed)</span>
+          <span class="food-price">€4.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Masala Fries</span>
+          <span class="food-price">€3.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Raita</span>
+          <span class="food-price">€2.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Papad</span>
+          <span class="food-price">€1.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Mango Chutney</span>
+          <span class="food-price">€1.50</span>
+        </div>
+		
+		<div class="food-item">
+          <span>Rasgulla</span>
+          <span class="food-price">€2.50</span>
+        </div>
+      </div>
+
+      <!-- SPECIAL -->
+      <div class="menu-category">
+        <h3 class="category-title">Local Traditional Food</h3>
+
+        <div class="food-item">
+          <span>Paani Puri (6 pcs)</span>
+          <span class="food-price">€3.00</span>
+        </div>
+
+        <div class="food-item">
+          <span>Momos (2 pcs)</span>
+          <span class="food-price">€4</span>
+        </div>
+
+        <div class="food-item">
+          <span>Mango Shake</span>
+          <span class="food-price">€3.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Falooda</span>
+          <span class="food-price">€4.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Roohafza</span>
+          <span class="food-price">€1.50</span>
+        </div>
+
+        <div class="food-item">
+          <span>Lassi</span>
+          <span class="food-price">€1.50</span>
+        </div>
+		
+		<div class="food-item">
+          <span>Tea</span>
+          <span class="food-price">€2.50</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOD PHOTO GALLERY ===== -->
+  <section class="gallery">
+
+    <!-- Replace each placeholder with your own food photo -->
+    <div class="photo-box">
+      <img src="images/food1.jpg" alt="Indian dish 1"
+           onerror="this.remove(); this.parentElement.innerHTML='📷 Add your food photo here';">
+    </div>
+
+    <div class="photo-box">
+      <img src="images/food2.jpg" alt="Indian dish 2"
+           onerror="this.remove(); this.parentElement.innerHTML='📷 Add your food photo here';">
+    </div>
+
+    <div class="photo-box">
+      <img src="images/food3.jpg" alt="Indian dish 3"
+           onerror="this.remove(); this.parentElement.innerHTML='📷 Add your food photo here';">
+    </div>
+
+    <div class="photo-box">
+      <img src="images/food4.jpg" alt="Indian dish 4"
+           onerror="this.remove(); this.parentElement.innerHTML='📷 Add your food photo here';">
+    </div>
+
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <h2>Made with Love ❤️</h2>
+
+    <p>
+      At Aastha's Vegeterian Kitchen, we bring you the 
+	  comforting taste of homemade Indian food. Every 
+	  dish is prepared with care, fresh ingredients 
+	  and authentic Indian spices.
+    </p>
+  </section>
+
+  <!-- ===== FOOTER / CONTACT ===== -->
+  <footer id="contact">
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>📍 Location</h3>
+        <p>Toulouse, France</p>
+        <p>Exact address coming soon</p>
+      </div>
+
+      <div>
+        <h3>📞 Contact</h3>
+        <!-- Replace with your real phone number -->
+        <p>+33 7 67 01 56 33</p>
+        <p>Only Messaging</p>
+      </div>
+
+      <div>
+        <h3>🕒 Opening Hours</h3>
+        <p>Mon - Sat: 11:00 - 21:00</p>
+        <p>Sunday: Closed</p>
+      </div>
+
+      <div>
+        <h3>Follow Us</h3>
+        <!-- Add your social media links -->
+        <p>
+          <a href="#">Instagram</a> |
+          <a href="#">Facebook</a>
+        </p>
+        <p>Follow us for updates!</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      Aastha's Kitchen © 2026 |
+      Homemade Food • Indian Flavours • With Love
+    </div>
+
+  </footer>
+
+</body>
+</html>
